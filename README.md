@@ -22,11 +22,7 @@ Valgrind是一款用于内存调试、内存泄漏检测以及性能分析的软
     linux> make
 ```
     
-用.map文件来重排图,.map文件需要你自己编写程序生成:
-```
-    linux> chmod a+x permutate.sh
-    linux> ./permutate.sh ./data/XX.txt ./xx.map
-```
+在resort.cpp中更换自己想要重排的文件路径，会生成output.txt
 
 将重排过后的图文件路径写在bfs中
 
