@@ -5,6 +5,7 @@ struct Edge
 {
     int ver; // 节点编号
     int inde; // 节点入度
+    int outde; // 节点出度
 }edges[MAX_NUM];
 int num = 0; // 记录文件中节点个数
 vector<vector<int>> arr; // 记录读取的文件
@@ -17,6 +18,7 @@ void init()
     {
         edges[i].ver = i;
         edges[i].inde = 0;
+        edges[i].outde = 0;
     }
 }
 void read_file(string file_path)
@@ -43,7 +45,8 @@ void count_Degree()
     for (const auto& row : arr) 
     {
         //cout << row[0] << " " << row[1]<<endl;
-        edges[row[1]].inde+=1;
+        edges[row[1]].inde += 1;
+        edges[row[0]].outde += 1;
         if(!visited[row[0]])
         {
             num += 1;
@@ -59,7 +62,10 @@ void count_Degree()
 }
 bool cmp(struct Edge &t1, struct Edge &t2)
 {
+    //按照入度排序
     return t1.inde > t2.inde;
+    // 按照出度排序
+    //return t1.outde > t2.outde;
 }
 void ver_To_Next()
 {
